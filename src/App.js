@@ -10,12 +10,15 @@ class App extends Component {
     this.state = {
       monsters: [
         {
+          id: '0',
           name: 'Frankestein'
         },
         {
+          id: '1',
           name: 'Dracula'
         },
         {
+          id: '2',
           name: 'Zombie'
         }
       ]
@@ -25,15 +28,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            { this.state.string }
-          </p>
-          <button onClick={() => {this.setState({ string: 'Hello Adriana !!!' })}}>
-            Change text
-          </button>
-        </header>
+        {
+          this.state.monsters.map((monster) => {
+            return <h1 key={monster.id}> {monster.name} </h1>
+          })
+        }
       </div>
     );
   }
