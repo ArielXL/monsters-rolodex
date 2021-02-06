@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+
 import CardList from './components/card-list/card-list.component';
 
 class App extends Component {
@@ -17,19 +18,14 @@ class App extends Component {
 
     fetch(url)
       .then(response => response.json())
-        .then(users => this.setState({ monsers: users }))
+        .then(users => this.setState({ monsters: users }))
   }
 
   render() {
+    console.log(this.state.monsters);
     return (
       <div className="App">
-        <CardList>
-          {
-            this.state.monsters.map((monster) => {
-              return <h1 key={monster.id}> {monster.name} </h1>
-            })
-          }
-        </CardList>
+        <CardList monsters={this.state.monsters} />
       </div>
     );
   }
